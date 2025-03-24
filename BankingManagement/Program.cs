@@ -1,6 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using BankingManagement;
 using Classes;
 var account = new BankAccount("<sindhu>", 1000);
+var interestEarningAccount = new InterestEarningAccount("Sindhu2", 1000);
 Console.WriteLine($"Account {account.Number} was created for {account.Owner} with {account.Balance} initial balance.");
 
 var account2 = new BankAccount("<somu>", 1000);

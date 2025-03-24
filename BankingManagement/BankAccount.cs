@@ -39,6 +39,9 @@ public class BankAccount
         var withdrawal = new Transaction(-amount, date, note);
         _allTransactions.Add(withdrawal);
     }
+
+    public virtual void PerformMonthEndTransactions() { }
+
     public string Number { get; }
     public string Owner { get; set; }
     public decimal Balance
