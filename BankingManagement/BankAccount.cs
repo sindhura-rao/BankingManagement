@@ -15,6 +15,7 @@ public class BankAccount
         Owner = name;
         MakeDeposit(initialBalance, DateTime.Now, "Initial balance");
     }
+    
 
     public void MakeDeposit(decimal amount, DateTime date, string note)
     {
@@ -39,6 +40,7 @@ public class BankAccount
         var withdrawal = new Transaction(-amount, date, note);
         _allTransactions.Add(withdrawal);
     }
+    
 
     public virtual void PerformMonthEndTransactions() { }
 
@@ -58,11 +60,24 @@ public class BankAccount
             return balance;
         }
     }
-    
 
-        
-    
-        
+
+    public string GetAccountHistory()
+    {
+        var report = new System.Text.StringBuilder();
+
+        decimal balance = 0;
+        report.AppendLine("Date\t\tAmount\tBalance\tNote");
+        foreach (var item in _allTransactions)
+        {
+            balance += item.Amount;
+            report.AppendLine($"{item.Date.ToShortDateString()}\t{item.Amount}\t{balance}\t{item.Notes}");
+        }
+
+        return report.ToString();
+    }
+
+
 }
 
 
