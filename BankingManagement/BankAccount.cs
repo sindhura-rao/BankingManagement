@@ -5,7 +5,7 @@ public class BankAccount
     private static int s_accountNumberSeed = 1234567890;
     private List<Transaction> _allTransactions = new List<Transaction>();
     public static DateTime Now { get; }
-
+   // public BankAccount(string name, decimal initialBalance) : this(name, initialBalance, 0) { }
     public BankAccount(string name, decimal initialBalance)
     {
 
@@ -77,17 +77,18 @@ public class BankAccount
         return report.ToString();
     }
 
+   // public virtual void PerformMonthEndTransactions() { }
 
 }
 
 
 
 
-    
 
 
 
 
 
-    
+
+
 
