@@ -9,7 +9,7 @@ namespace BankingManagement
 {
     public class InterestEarningAccount : BankAccount
     {
-        public InterestEarningAccount(string name, decimal initialBalance) : base(name, initialBalance)
+        public InterestEarningAccount(string name, decimal initialBalance, decimal maxWithdrawal) : base(name, initialBalance, maxWithdrawal)
         {
         }
 

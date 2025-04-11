@@ -1,16 +1,20 @@
-﻿namespace Classes;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Classes;
 
 public class BankAccount
 {
     private static int s_accountNumberSeed = 1234567890;
     private List<Transaction> _allTransactions = new List<Transaction>();
+    private readonly decimal _maxWithdrawal = 0;
     public static DateTime Now { get; }
    // public BankAccount(string name, decimal initialBalance) : this(name, initialBalance, 0) { }
-    public BankAccount(string name, decimal initialBalance)
+    public BankAccount(string name, decimal initialBalance, decimal maxWithdrawal)
     {
 
         Number = s_accountNumberSeed.ToString();
         s_accountNumberSeed++;
+        _maxWithdrawal = maxWithdrawal;
 
         Owner = name;
         MakeDeposit(initialBalance, DateTime.Now, "Initial balance");
@@ -19,7 +23,7 @@ public class BankAccount
 
     public void MakeDeposit(decimal amount, DateTime date, string note)
     {
-        if (amount <= 0)
+        if (amount <=0)
         {
             throw new ArgumentOutOfRangeException(nameof(amount), "Amount of deposit must be positive");
         }
@@ -37,8 +41,15 @@ public class BankAccount
         {
             throw new InvalidOperationException("Not sufficient funds for this withdrawal");
         }
+
+        if (amount > _maxWithdrawal)
+        {
+            throw new InvalidOperationException("withdrawal limit exceeded");
+        }
         var withdrawal = new Transaction(-amount, date, note);
         _allTransactions.Add(withdrawal);
+        amount = Balance-amount;
+        
     }
     
 

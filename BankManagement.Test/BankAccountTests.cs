@@ -12,16 +12,16 @@ namespace BankingManagement.Test
         [Fact]
         public void DepositTest()
         {
-            BankAccount test = new BankAccount("test", 1000);
+            BankAccount test = new BankAccount("test", 1000, 1000);
             test.MakeDeposit(500,DateTime.Now,"1ST DEPOSIT");
 
             var bal = test.Balance;
 
-            Assert.Equal(1500, bal);
+            Assert.Equal(500, bal);
         }
         public void MakeWithdrawalTest1()
         {
-            BankAccount test1=new BankAccount("test1", 1000);
+            BankAccount test1=new BankAccount("test1", 1000 , 1000);
             test1.MakeWithdrawal(200, DateTime.Now, "1st withdrawal");
 
             var bal = test1.Balance;

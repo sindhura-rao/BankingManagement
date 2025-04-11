@@ -9,7 +9,7 @@ namespace BankingManagement
 {
     public class LineOfCreditAccount : BankAccount
     { 
-        public LineOfCreditAccount(string name, decimal initialBalance) : base(name, initialBalance)
+        public LineOfCreditAccount(string name, decimal initialBalance , decimal maxWithdrawal) : base(name, initialBalance, maxWithdrawal)
         { }
         public override void PerformMonthEndTransactions()
         {
